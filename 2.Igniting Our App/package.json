@@ -1,0 +1,44 @@
+{
+  "name": "food-odering-app",
+  "version": "1.0.0",
+  "description": "Food Ordering App",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nikitadhonnar16/Food-Ordering-app.git"
+  },
+  "keywords": [
+    "Food",
+    "Ordering",
+    "Application",
+    "Nikita",
+    "Food",
+    "Ordering",
+    "App"
+  ],
+  "author": "Nikita",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nikitadhonnar16/Food-Ordering-app/issues"
+  },
+  "homepage": "https://github.com/Nikitadhonnar16/Food-Ordering-app#readme",
+  "devDependencies": {
+    "parcel": "^2.10.1",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+
+  "browserlist":
+[
+   "last 2 chrome version",
+   "last 2 firebox version"
+]
+}
+
+

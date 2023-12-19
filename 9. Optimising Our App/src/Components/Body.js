@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 
+
 const Body =() =>
 {
 
@@ -10,6 +11,8 @@ const [ListOfRestaurants, setListOfRestaurants]=useState([])
 const [FilteredRestarants, setFilteredRestarants]=useState([])
 
 const [searchText, setsearchText]=useState(""); 
+
+
 
 //console.log("Body Rendered");
 
@@ -20,7 +23,7 @@ useEffect(()=>{
 const fetchData= async()=>
 {
         const data= await fetch(
-         "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.2183307&lng=72.9780897&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.2183307&lng=72.9780897&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
         );
            
        //convert Data into json  
@@ -34,8 +37,16 @@ const fetchData= async()=>
       setFilteredRestarants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);     
 };
 
-   
-    return (ListOfRestaurants?.length===0 && FilteredRestarants?.length===0 ) ? <Shimmer/>:(
+  
+    // return ListOfRestaurants.length===0 ? <Shimmer/>:
+
+    if (ListOfRestaurants?.length === 0) {
+        return <Shimmer />
+    }
+    
+    
+    
+    return (
              <div className="body">
                     <div className="filter">
 
@@ -62,8 +73,6 @@ const fetchData= async()=>
                                 
                             }>Search</button>
                         </div>
-                  
-
 
                     <button className="filter-btn" onClick={()=>
                    { //filter logic here
@@ -73,14 +82,15 @@ const fetchData= async()=>
                         setFilteredRestarants(FilterList);
                     }} >Top Rated Restaurants</button>
 
+
                     </div>
 
+
+                
                     <div className="res-container">
 
-
-
                     {
-                    FilteredRestarants.map((restaurant)=>
+                    FilteredRestarants?.map((restaurant)=>
                   <Link 
                    key={restaurant.info.id} 
                    to={"/restaurants/" + restaurant.info.id}> 

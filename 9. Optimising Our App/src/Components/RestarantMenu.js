@@ -1,16 +1,17 @@
-import {useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import {useParams} from "react-router-dom";
-import { MENU_API } from "../utils/constants";
+import useRestarantMenu from "../utils/useRestarantMenu";
+
+
 
 const RestarantMenu=()=>
 {
 
-  const [resInfo, setResInfo]=useState(null);
-
   const {resId}=useParams();
+  const resInfo=useRestarantMenu(resId);
 
-  
+ 
+
 
 
          if(resInfo===null) return <Shimmer/>;
@@ -30,7 +31,7 @@ const RestarantMenu=()=>
                 <p>{cuisines.join(", ")} - {costForTwoMessage}</p>
                    
                     <ul >
-                         {itemCards.map((item)=>
+                         {itemCards && itemCards.map((item)=>
                          <li key={item.card.info.id}>{item.card.info.name}  -  {"Rs."} {item.card.info.price/100} </li>)}
                         
                     </ul>
